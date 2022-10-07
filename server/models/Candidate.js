@@ -11,8 +11,16 @@ const candidateSchema = new Schema({
     required: true,
     trim: true,
   },
-  location: {
+  city: {
     type: String,
+    required: true,
+  },
+  state: {
+    type: String,
+    required: true,
+  },
+  zipcode: {
+    type: Number,
     required: true,
   },
   email: {
