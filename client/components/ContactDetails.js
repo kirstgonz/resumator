@@ -8,9 +8,26 @@ class ContactDetails extends Component {
     };
 
     render() {
-        const{values, handleChange} = this.props;
+        const{values} = this.props;
+        const {classes} = this.props;
         return (
-            
-        )
+
+            value = {values.firstname}
+
+            value = {values.lastname}
+
+            value = {values.city}
+
+            value = {values.state}
+
+            value = {values.zip}
+
+            value = {values.phone}
+
+            value = {values.email}
+
+        );
     }
 }
+
+export default (ContactDetails);
