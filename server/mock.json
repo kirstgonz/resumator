@@ -1,0 +1,145 @@
+{
+    "name": "Kate Thao Lam",
+    "description": "I am a recent college graduate of Austin Community College and enrolled in the Full Stack Web Development Coding bootcamp at the University of Texas. I am looking for opportunities in web development. I have over 10 years work experience with various retail corporations, both in Vietnam and the US. During this time I have developed the following skills: customer service, team management, task priortization, and data analytics.",
+    "email": "kate.lam.austin@gmail.com",
+    "location": "Round Rock, TX",
+    "phone_number": "737 203 1148",
+    "linkedIn": "linkedin.com/in/kate-thao-lam",
+    "github": "github.com/Kate-github",
+    "class_projects": [
+        {
+            "name": "Foodle",
+            "description": "Recipe search engine that allows users to search recipes of their favorite dishes. Users were able to save recipes to local storage and watch related videos.",
+            "technologies": [
+                "HTML",
+                "JavaScript",
+                "CSS",
+                "Commercial Web Apis"
+            ],
+            "roles": [
+                "Developer",
+                "Project Lead"
+            ],
+            "sourceLink": "https://github.com/Kate-github/Foodle",
+            "deployedLink": "https://kate-github.github.io/Foodle/"
+        },
+        {
+            "name": "Track Stream",
+            "description": "Web application that keeps you notified of all the video streaming services you are subscribed too. The application gives a visual representation monthly expesses on streaming services and renewal periods.",
+            "technologies": [
+                "NodeJs",
+                "Express",
+                "Mysql",
+                "Sequelize",
+                "Handlebars",
+                "Express-Session"
+            ],
+            "roles": [
+                "Developer"
+            ],
+            "sourceLink": "https://github.com/Kate-github/streaming-service-tracker",
+            "deployedLink": "https://shielded-thicket-83954.herokuapp.com/"
+        }
+    ],
+    "work_experience": [
+        {
+            "company": "Swarovski North America, Ltd",
+            "title": "Assistant Store Manager",
+            "location": "Round Rock, TX",
+            "start_date": "Nov 2018",
+            "end_date": "Jul 2021",
+            "responsibilities": [
+                "Contributed 20%-25% to total store sales.",
+                "Worked with Store Manager on operating strategies to ensure the store meet monthly sales targets.",
+                "Customer service: Utilizing 'clientelling' skills to establish customer relationships and maintain customer loyalty. Handled customer complaints effectively.",
+                "Visual merchandising: Making sure to update the displays periodically following brand’s standards and promotional strategies.",
+                "Team management and development: Trained new sale staff on product knowledge, selling skills, and POS proficiency. Troubleshooted issues for the team in store and on phone. Communicated the “hurdles” to the team right before the shifts start to ensure daily sales targets will be achieved.",
+                "Loss prevention/Inventory Management: managing and arranging the stock on a regular basis, daily checking returned stock, weekly checking damaged stock, making sure shipment receiving processes are accurate."
+            ]
+        },
+        {
+            "company": "DFS Group, Ltd",
+            "title": "Senior Key Account Assistant - Beauty Category",
+            "location": "Ho Chi Minh City, Vietnam",
+            "start_date": "Mar 2013",
+            "end_date": "Apr 2016",
+            "responsibilities": [
+                "Account Management for multiple luxury cosmetic and fragrance brands such as Christian Dior, Estee Lauder, Shiseido, SKII, L'occitane and other brands for Vietnam region.",
+                "Inventory Management: Responsible for tracking inventory levels, delivering proper and prompt actions for slow and best selling skus as well as to be expired stocks.",
+                "Brand Development and Strategy: Responsible for product assortments, requesting and setting up promotions/ events, sales targets, sales staffs commission structures, visual merchandising, and monthly/seasonal markdowns implementation.",
+                "Sales management: Duties included coordination with operations team to ensure sales targets are met."
+            ]
+        },
+        {
+            "company": "DANH GIA Co., Ltd",
+            "title": "Assistant Operation Manager - Lacoste",
+            "location": "Ho Chi Minh City, Vietnam",
+            "start_date": "May 2012",
+            "end_date": "Feb 2013",
+            "responsibilities": [
+                "Vietnam regional store manager for Lacoste. Developed teamwork and culture that is aligned with brand's spirit. Established commission policy for sales teams.",
+                "Sales management: set sales targets for all retail stores in Vietnam, monitor teams to obtain sales targets, apply seasonal markdowns",
+                "Inventory management: inventory levels, track and give solutions for slow and bestselling items"
+            ]
+        },
+        {
+            "company": "DFS Group, Ltd",
+            "title": "Merchandising Associate - Fashion and Lux Watches",
+            "location": "Ho Chi Minh City, Vietnam",
+            "start_date": "Jun 2007",
+            "end_date": "Apr 2010"
+        }
+    ],
+    "education": [
+        {
+            "school_name": "UT Austin BootCamps",
+            "degree": "Certficate - Full Stack Web Development",
+            "graduation_date": "October 2022"
+        },
+        {
+            "school_name": "Austin Community College",
+            "degree": "Associates in Business Adminstration",
+            "gpa": "4.0",
+            "honors": [
+                "Chancellor’s Honor Award"
+            ],
+            "graduation_date": "December 2021"
+        }
+    ],
+    "skills": [
+        "HTML",
+        "CSS",
+        "Javascript",
+        "MySQL",
+        "Node.js",
+        "Expressjs",
+        "MongoDB",
+        "ReactJS",
+        "Communication",
+        "Customer Service",
+        "Team Management",
+        "Tasks Management",
+        "Retail Analytics"
+    ],
+    "honor_awards": [
+        {
+            "company": "Swarovski North America, Ltd.",
+            "award": "EOM - (3 time Awardee)"
+        },
+        {
+            "company": "DFS, Ltd.",
+            "award": "EOM - (2 time Awardee)"
+        }
+    ],
+    "languages": [
+        {
+            "name": "English",
+            "proficiency": "Fluent"
+        },
+        {
+            "name": "Vietnamese",
+            "proficiency": "Native"
+        }
+    ],
+    "interests": []
+}
