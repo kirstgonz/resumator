@@ -12,24 +12,20 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
 
-// Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 
-// Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/oasis-diary",{
+//DB connection
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/resumator",{
   useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useCreateIndex: true,
-  useFindAndModify: false
+  useUnifiedTopology: true
 });
 
-// Define API routes here
-app.use("/",require("./routes/user-routes"));
-app.use("/api/notes",require("./routes/journal-routes"));
+// API routes 
+//app.use("/",require("./routes/user-routes"));
 
-// Send every other request to the React app
+//React app
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
