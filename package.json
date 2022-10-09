@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start:client": "cd client && npm start",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "cd client && npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:prod": "node server.js"
   },
   "keywords": [],
   "author": "",
