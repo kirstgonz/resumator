@@ -1,12 +1,43 @@
-import * as React from 'react';
+import React, { useState } from 'react';
+import { useMutation } from '@apollo/client';
+import { LOGIN_USER } from '../../utils/mutations';
+import Auth from '../../utils/auth';
 import { Card } from 'react-bootstrap';
 import { Avatar, Button, CssBaseline, TextField, Link, Grid, Typography, Container } from '@mui/material';
 
 export default function Login() {
 
+  const [formState, setFormState] = useState({ email: '', password: '' });
+  const [login, { error }] = useMutation(LOGIN_USER);
+
+  // update state based on form input changes
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+
+    setFormState({
+      ...formState,
+      [name]: value,
+    });
+  };
+  
   // Handle login button submit
   const handleSubmit = async (event) => {
     event.preventDefault();
+    try {
+      const { data } = await login({
+        variables: { ...formState },
+      });
+
+      Auth.login(data.login.token);
+    } catch (e) {
+      console.error(e);
+    }
+
+    // clear form values
+    setFormState({
+      email: '',
+      password: '',
+    });
   };
 
   //Login Jsx
@@ -40,6 +71,8 @@ export default function Login() {
                       name="email"
                       autoComplete="email"
                       autoFocus
+                      value={formState.email}
+                      onChange={handleChange}
                     />
 
                     {/* Password input */}
@@ -53,6 +86,8 @@ export default function Login() {
                       type="password"
                       id="password"
                       autoComplete="current-password"
+                      value={formState.password}
+                      onChange={handleChange}
                     />
 
                     {/* Login Button */}
@@ -75,6 +110,7 @@ export default function Login() {
                       </Grid>
                     </Grid>
                   </form>
+                  {error && <div>Login failed</div>}
                 </div>
               </Container>
             </Card.Body>
