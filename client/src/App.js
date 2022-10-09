@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route, Routes } from "react-router-dom";
 import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from '@apollo/client';
+import { setContext } from '@apollo/client/link/context';
 import { Home } from "./Home";
 import { Resumes } from "./Resumes";
 import Resumator from "./Resumator";
