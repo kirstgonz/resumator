@@ -1,9 +1,7 @@
 import React from 'react';
 import { Route, Routes } from "react-router-dom";
 import { Home } from "./Home";
-import { Login } from "./Login";
 import { Resumes } from "./Resumes";
-import { Signup } from "./Signup";
 import Resumator from "./Resumator";
 import { ContactInfo } from './ContactInfo';
 import { Work } from './Work';
@@ -12,6 +10,8 @@ import { Skills } from './Skills';
 import { Interests } from './Interests';
 import { Languages } from './Languages';
 import { Awards } from './Awards';
+import Login from './Pages/Login';
+import Signup from './Pages/Signup';
 
 export function App() {
     return (

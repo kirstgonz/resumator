@@ -1,8 +1,8 @@
 import * as React from 'react';
-export function Login() {
+export default function Signup() {
     return (
       <div>
-          <h1> This is the Login page</h1>
+          <h1> This is the Signup page</h1>
       </div>
     )
   }
