@@ -12,8 +12,6 @@
         "experience": [Experience],
         "education": [Education],
         "awards": [Awards],
-        "skils": "front end, back end, github collaboration",
-        "languages": "Python, Javascript",
-        "interests": "Coding, Sports, Hiking"
+        "skills": "Javascript, front end, back end, github collaboration",
     }
 ]
