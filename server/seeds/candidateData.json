@@ -12,6 +12,6 @@
         "experience": [Experience],
         "education": [Education],
         "awards": [Awards],
-        "skills": "Javascript, front end, back end, github collaboration",
+        "skills": "Javascript, front end, back end, github collaboration"
     }
 ]
