@@ -62,7 +62,13 @@ const slice = createSlice({
                     "end_date": "Apr 2010"
                 }
             ],
-            projects: [],
+            projects: [
+                {
+                    "title": "CSS for Dummies",
+                    "role": "Front end developer",
+                    "tasks": "Created style sheets for website"    
+                }
+            ],
             education: [],
             skills: [],
             interests: [],
@@ -107,6 +113,7 @@ export const ResumatorRedux = {
             return state.resumator.currentPageTitle;
         },
         selectCandidate: state => state.resumator.candidate,
-        selectExperience: state => state.resumator.candidate.experience
+        selectExperience: state => state.resumator.candidate.experience,
+        selectProject: state => state.resumator.candidate.projects
     }
 };
