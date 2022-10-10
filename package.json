@@ -2,12 +2,19 @@
   "name": "resumator",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "start:client": "cd client && npm start",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server/server.js",
+    "build": "cd client && npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:prod": "node server.js",
+    "install:client": "cd client && npm install",
+    "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm start\""
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^7.4.0"
+  }
 }
