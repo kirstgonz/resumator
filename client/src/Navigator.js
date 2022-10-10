@@ -8,15 +8,11 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import HomeIcon from '@mui/icons-material/Home';
-import PeopleIcon from '@mui/icons-material/People';
 import DnsRoundedIcon from '@mui/icons-material/DnsRounded';
 import PermMediaOutlinedIcon from '@mui/icons-material/PhotoSizeSelectActual';
 import PublicIcon from '@mui/icons-material/Public';
 import SettingsEthernetIcon from '@mui/icons-material/SettingsEthernet';
-import SettingsInputComponentIcon from '@mui/icons-material/SettingsInputComponent';
-import TimerIcon from '@mui/icons-material/Timer';
 import SettingsIcon from '@mui/icons-material/Settings';
-import PhonelinkSetupIcon from '@mui/icons-material/PhonelinkSetup';
 import { NavLink } from 'react-router-dom';
 
 const categories = [
@@ -25,6 +21,7 @@ const categories = [
         children: [
             { id: 'contact-info', title: 'Contact Information', icon: <DnsRoundedIcon /> },
             { id: 'work', title: 'Work Experience', icon: <SettingsEthernetIcon /> },
+            { id: 'education', title: 'Education', icon: <SettingsEthernetIcon /> },
             { id: 'projects', title: 'Projects', icon: <PermMediaOutlinedIcon /> },
             { id: 'skills', title: 'Skills', icon: <PublicIcon /> },
             { id: 'awards', title: 'Awards', icon: <SettingsEthernetIcon /> },
@@ -65,18 +62,20 @@ export default function Navigator(props) {
                 <ListItem sx={{ ...item, ...itemCategory, fontSize: 22, color: '#fff' }}>
                     Resumator
                 </ListItem>
-                <ListItem sx={{ ...item, ...itemCategory }}>
-                    <ListItemIcon>
-                        <HomeIcon /> Home
-                    </ListItemIcon>
-                </ListItem>
+                <NavLink to={`/resumator`}>
+                    <ListItem sx={{ ...item, ...itemCategory }}>
+                        <ListItemIcon>
+                            <HomeIcon /> Home
+                        </ListItemIcon>
+                    </ListItem>
+                </NavLink>
                 {categories.map(({ id, children }) => (
                     <Box key={id} sx={{ bgcolor: '#101F33' }}>
                         <ListItem sx={{ py: 2, px: 3 }}>
                             <ListItemText sx={{ color: '#fff' }}>{id}</ListItemText>
                         </ListItem>
                         {children.map(({ id: childId, title, icon, active }) => (
-                            <NavLink to={`/resumator/${childId}`}>
+                            <NavLink key={childId} to={`/resumator/${childId}`}>
                                 <ListItem disablePadding key={childId}>
                                     <ListItemButton selected={active} sx={item}>
                                         <ListItemIcon>{icon}</ListItemIcon>
