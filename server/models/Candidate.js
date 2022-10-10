@@ -30,7 +30,6 @@ const candidateSchema = new Schema({
       name: String,
       description: String,
       technologies: [String],
-      roles: [String],
       sourceLink: String,
       deployedLink: String
     }
@@ -40,8 +39,8 @@ const candidateSchema = new Schema({
       company: String,
       title: String,
       location: String,
-      start_date: Date,
-      end_date: Date,
+      startDate: Date,
+      endDate: Date,
       responsibilities: [String]
     }
   ],
@@ -52,14 +51,7 @@ const candidateSchema = new Schema({
       graduation_date: Date
     }
   ],
-  awards: [
-    {
-      issuer: String,
-      award: String
-    }
-  ],
   skills: [String],
-  languages: [String],
   interests: [String]
 });
 
