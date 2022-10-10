@@ -1,0 +1,16 @@
+[
+    {
+        "firstName": "John",
+        "lastName": "Smith",
+        "city": "Austin",
+        "state": "TX",
+        "zipcode": "73301",
+        "email" : "jsmith@gmail.com",
+        "linkedIn": "TXJsmith",
+        "github": "githubt.com/JSmithTX",
+        "projects": [Projects],
+        "experience": [Experience],
+        "education": [Education],
+        "skills": "Javascript, front end, back end, github collaboration"
+    }
+]
