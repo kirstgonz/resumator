@@ -1,12 +1,41 @@
-import * as React from 'react';
+import React, { useState } from 'react';
+import { useMutation } from '@apollo/client';
 import { Avatar, Button, CssBaseline, TextField, Link, Grid, Typography, Container } from '@mui/material';
 import { Card } from 'react-bootstrap';
+import { ADD_USER } from '../../utils/mutations';
+import Auth from '../../utils/auth';
 
 export default function Signup() {
+
+  const [formState, setFormState] = useState({
+    username: '',
+    email: '',
+    password: '',
+  });
+  const [addUser, { error }] = useMutation(ADD_USER);
+
+  // update state based on form input changes
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+
+    setFormState({
+      ...formState,
+      [name]: value,
+    });
+  };
 
   // Handle sign up form submit
 	const handleSubmit = async (event) => {
 		event.preventDefault();
+    try {
+      const { data } = await addUser({
+        variables: { ...formState },
+      });
+
+      Auth.login(data.addUser.token);
+    } catch (e) {
+      console.error(e);
+    }
 	};
 
   //Signup JSX starts here
@@ -32,26 +61,15 @@ export default function Signup() {
                       <Grid item xs={12} sm={6}>
                         {/* Firstname input */}
                         <TextField
-                          autoComplete="fname"
-                          name="firstname"
+                          name="username"
                           variant="outlined"
                           required
                           fullWidth
-                          id="firstName"
-                          label="First Name"
+                          id="username"
+                          label="Your Username"
                           autoFocus
-                        />
-                      </Grid>
-                      <Grid item xs={12} sm={6}>
-                        {/* Lastname input */}
-                        <TextField
-                          variant="outlined"
-                          required
-                          fullWidth
-                          id="lastName"
-                          label="Last Name"
-                          name="lastname"
-                          autoComplete="lname"
+                          value={formState.username}
+                          onChange={handleChange}
                         />
                       </Grid>
                       <Grid item xs={12}>
@@ -63,7 +81,8 @@ export default function Signup() {
                           id="email"
                           label="Email Address"
                           name="email"
-                          autoComplete="email"
+                          value={formState.email}
+                          onChange={handleChange}
                         />
                       </Grid>
                       <Grid item xs={12}>
@@ -76,20 +95,8 @@ export default function Signup() {
                           label="Password"
                           type="password"
                           id="password"
-                          autoComplete="current-password"
-                        />
-                      </Grid>
-                      <Grid item xs={12}>
-                        {/* Confirm Password input */}
-                        <TextField
-                          variant="outlined"
-                          required
-                          fullWidth
-                          name="confirmPassword"
-                          label="Confirm Password"
-                          type="password"
-                          id="confirmPassword"
-                          autoComplete="current-password"
+                          value={formState.password}
+                          onChange={handleChange}
                         />
                       </Grid>
                     </Grid>
