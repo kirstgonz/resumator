@@ -1,5 +1,5 @@
 import { Button, ButtonGroup, ListItem, Modal, Paper, Table, TableBody, TableCell, TableContainer, TableRow, TextField } from '@mui/material';
-import { DesktopDatePicker, MobileDatePicker } from '@mui/x-date-pickers';
+import {  MobileDatePicker } from '@mui/x-date-pickers';
 import dayjs, { Dayjs } from 'dayjs';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
@@ -14,16 +14,21 @@ export function Work() {
             dispatch(ResumatorRedux.actions.setCurrentPageTitle('Work Experience'));
         }, [dispatch])
     React.useEffect(dispatchTitle, []);
-    let currentIndex = -1;
+    const [currentIndex, setCurrentIndex] = React.useState(-1);
     const workExperience = useSelector(ResumatorRedux.selectors.selectExperience);
-    const [curExp, setCurExp] = React.useState({});
     const [open, setOpen] = React.useState(false);
     const [modalButtonLabel, setModalButtonLabel] = React.useState('Save');
     const [modalTitle, setModalTitle] = React.useState('Edit Work Experience');
     const [inputFieldVariant, setInputFieldVariant] = React.useState('filled');
+    const [jobTitle, setJobTitle] = React.useState('');
+    const [jobDescription, setJobDescription] = React.useState('');
+    const [jobStartDate, setJobStartDate] = React.useState('');
+    const [jobEndDate, setJobEndDate] = React.useState('');
+    const [jobCompanyName, setJobCompanyName] = React.useState('');
+
+
     const handleOpen = () => setOpen(true);
     const handleClose = () => {
-        currentIndex = -1;
         setOpen(false);
     };
     const handleDelete = (index) => {
@@ -34,23 +39,45 @@ export function Work() {
     const handleEditModal = (index) => {
         return () => {
             setInputFieldVariant('filled');
-            currentIndex = index;
-            setCurExp(workExperience[index])
+            setCurrentIndex(index);
+            let curExp = workExperience[index];
             setOpen(true);
             setModalTitle('Edit Work Experience');
             setModalButtonLabel('Save');
+            // set all modal variables;
+            setJobTitle(curExp.title);
+            setJobDescription(curExp.responsibilities);
+            setJobCompanyName(curExp.company);
+            setJobStartDate(curExp.start_date);
+            setJobEndDate(curExp.end_date);
         }
     }
     const handleAddModal = () => {
-        currentIndex = -1;
+        setCurrentIndex(-1);
         setInputFieldVariant('outlined');
         setModalTitle('Add Work Experience');
         setModalButtonLabel('Add');
-        setCurExp({});
         setOpen(true);
+        setJobTitle('');
+        setJobDescription('');
+        setJobCompanyName('');
+        setJobStartDate(null);
+        setJobEndDate(null);
     };
-    const handleModalClick = () => {
-        curExp()
+    const handleModalSave = () => {
+        const exp = {
+            title: jobTitle,
+            responsibilities: jobDescription,
+            company: jobCompanyName,
+            start_date: jobStartDate,
+            end_date: jobEndDate
+        }
+        if (currentIndex > -1) {
+            dispatch(ResumatorRedux.actions.putWorkExperience({ index: currentIndex, item: exp }));
+        } else {
+            dispatch(ResumatorRedux.actions.addWorkExperience(exp));
+        }
+        handleClose();
     }
     const modalStyle = {
         position: 'absolute',
@@ -98,10 +125,14 @@ export function Work() {
                     <LocalizationProvider dateAdapter={AdapterDayjs}>
                         <h3>{modalTitle}</h3>
                         <div>
-                            <TextField value={curExp.company} label="Company" id="company" sx={{ m: 1, width: '25ch' }} variant={inputFieldVariant} />
-                            <TextField value={curExp.title}
-                                onChange={(newValue) => {
-                                    curExp.start_date = newValue;
+                            <TextField value={jobCompanyName}
+                                onChange={(e) => {
+                                    setJobCompanyName(e.target.value);
+                                }}
+                                label="Company" id="company" sx={{ m: 1, width: '25ch' }} variant={inputFieldVariant} />
+                            <TextField value={jobTitle}
+                                onChange={function (e) {
+                                    setJobTitle(e.target.value)
                                 }}
                                 label="Job Title" id="title" sx={{ m: 1, width: '50ch' }} variant={inputFieldVariant} />
                         </div>
@@ -109,18 +140,19 @@ export function Work() {
 
                             <MobileDatePicker
                                 label="Start Date"
-                                value={curExp.start_date}
+                                value={jobStartDate}
                                 onChange={(newValue) => {
-                                    curExp.start_date = newValue;
+                                    setJobStartDate(newValue);
                                 }}
                                 renderInput={(params) => <TextField sx={{ m: 1, width: '25ch' }}  {...params} />}
                             />
                             <MobileDatePicker
                                 label="End Date"
-                                value={curExp.end_date}
+                                value={jobEndDate}
 
                                 onChange={(newValue) => {
-                                    // setValue(newValue);
+                                    console.log(newValue, 'end date')
+                                    setJobEndDate(newValue);
                                 }}
                                 renderInput={(params) => <TextField sx={{ m: 1, width: '25ch' }} {...params} />}
                             />
@@ -129,14 +161,17 @@ export function Work() {
                             <TextField
                                 id="responsibilities"
                                 label="Responsibilities"
-                                value={curExp.responsibilities}
+                                onChange={function (e) {
+                                    setJobDescription(e.target.value)
+                                }}
+                                value={jobDescription}
                                 multiline
                                 rows={8}
                                 sx={{ m: 1, width: '50ch' }}
                                 variant={inputFieldVariant}
                             />
                         </div>
-                        <Button onClick={handleModalClick} variant="contained">{modalButtonLabel}</Button>
+                        <Button onClick={handleModalSave} variant="contained">{modalButtonLabel}</Button>
                     </LocalizationProvider>
                 </Box>
             </Modal>
