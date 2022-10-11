@@ -6,7 +6,7 @@ const slice = createSlice({
         candidate: {
             "firstName": "Kate",
             "middleName": "Thao",
-            "lastName":"Lam",
+            "lastName": "Lam",
             "description": "I am a recent college graduate of Austin Community College and enrolled in the Full Stack Web Development Coding bootcamp at the University of Texas. I am looking for opportunities in web development. I have over 10 years work experience with various retail corporations, both in Vietnam and the US. During this time I have developed the following skills: customer service, team management, task priortization, and data analytics.",
             "email": "kate.lam.austin@gmail.com",
             "location": "Round Rock, TX",
@@ -48,11 +48,11 @@ const slice = createSlice({
                     "location": "Ho Chi Minh City, Vietnam",
                     "start_date": "May 2012",
                     "end_date": "Feb 2013",
-                    "responsibilities": 
+                    "responsibilities":
                         `-Vietnam regional store manager for Lacoste. Developed teamwork and culture that is aligned with brand's spirit. Established commission policy for sales teams.
 -Sales management: set sales targets for all retail stores in Vietnam, monitor teams to obtain sales targets, apply seasonal markdowns.
 -Inventory management: inventory levels, track and give solutions for slow and bestselling items.`
-                    
+
                 },
                 {
                     "company": "DFS Group, Ltd",
@@ -66,7 +66,7 @@ const slice = createSlice({
                 {
                     "title": "CSS for Dummies",
                     "role": "Front end developer",
-                    "tasks": "Created style sheets for website"    
+                    "tasks": "Created style sheets for website"
                 }
             ],
             education: [],
@@ -76,14 +76,31 @@ const slice = createSlice({
             awards: []
 
         },
-        resumes: []
+        resumes: [
+            {
+                title: 'Experienced Retail Professional',
+                nickName: 'For Retail',
+                intro: 'This is an intro to get a retail job.',
+                isPublic: true
+            },
+            {
+                title: 'Full Stack Developer',
+                nickName: 'For Tech Job',
+                intro: 'This is an intro to get a tech job.',
+                isPublic: false
+            }
+        ]
     },
     reducers: {
+        putWorkExperience: (state, action) => {
+            console.log(state, 'work')
+            state.candidate.experience[action.payload.index] = action.payload.item;
+        },
         addWorkExperience: (state, action) => {
-            state.candidate.experience.add(action.payload);
+            state.candidate.experience.push(action.payload);
         },
         addProject: (state, action) => {
-            state.candidate.projects.add(action.payload);
+            state.candidate.projects.push(action.payload);
         },
         deleteWorkExperience: (state, action) => {
             state.candidate.experience.splice(action.payload, 1);
@@ -93,11 +110,20 @@ const slice = createSlice({
             state.candidate.projects.splice(action.payload, 1);
         },
         updateContactInfo: (state, action) => {
-            state.candidate = action.payload;
+            state.candidate = { ...state.candidate, ...action.payload };
         },
         setCurrentPageTitle: (state, action) => {
             state.currentPageTitle = action.payload
-        }
+        },
+        deleteResume: (state, action) => {
+            state.resumes.splice(action.payload, 1);
+        },
+        putResume: (state, action) => {
+            state.resumes[action.payload.index] = action.payload.item;
+        },
+        addResume: (state, action) => {
+            state.resumes.push(action.payload);
+        },
     },
 });
 
@@ -112,6 +138,7 @@ export const ResumatorRedux = {
         selectPageTitle: (state) => {
             return state.resumator.currentPageTitle;
         },
+        selectResumes: state => state.resumator.resumes,
         selectCandidate: state => state.resumator.candidate,
         selectExperience: state => state.resumator.candidate.experience,
         selectProject: state => state.resumator.candidate.projects
