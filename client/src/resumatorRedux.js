@@ -96,11 +96,22 @@ const slice = createSlice({
             console.log(state, 'work')
             state.candidate.experience[action.payload.index] = action.payload.item;
         },
+        putProject: (state, action) => {
+            console.log(state, 'work')
+            state.candidate.projects[action.payload.index] = action.payload.item;
+        },
+        putSkills: (state, action) => {
+            console.log(state, 'work')
+            state.candidate.skills[action.payload.index] = action.payload.item;
+        },
         addWorkExperience: (state, action) => {
             state.candidate.experience.push(action.payload);
         },
         addProject: (state, action) => {
             state.candidate.projects.push(action.payload);
+        },
+        addSkills: (state, action) => {
+            state.candidate.skills.push(action.payload);
         },
         deleteWorkExperience: (state, action) => {
             state.candidate.experience.splice(action.payload, 1);
