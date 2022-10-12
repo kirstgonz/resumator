@@ -6,6 +6,8 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import { useSelector } from 'react-redux';
 import { ResumatorRedux } from './resumatorRedux';
+import Auth from "../src/utils/auth";
+import { Button } from '@mui/material';
 
 const lightColor = 'rgba(255, 255, 255, 0.7)';
 
@@ -16,7 +18,7 @@ function Header(props) {
 
   return (
     <React.Fragment>
-      
+
       <AppBar
         component="div"
         color="primary"
@@ -27,11 +29,18 @@ function Header(props) {
         <Toolbar>
           <Grid container alignItems="center" spacing={1}>
             <Grid item xs>
-              <Typography color="inherit" variant="h5" component="h1">
-                {title}
-              </Typography>
+              <div>
+                <div>
+                  <Typography color="inherit" variant="h5" component="h1">
+                    {title}
+                  </Typography>
+                </div>
+                <div>
+                  <Button onClick={() => Auth.logout()} variant="contained" sx={{ float: 'right' }}>Logout</Button>
+                </div>
+              </div>
             </Grid>
-            
+
           </Grid>
         </Toolbar>
       </AppBar>
