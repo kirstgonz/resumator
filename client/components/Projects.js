@@ -41,3 +41,8 @@ class Projects extends Component {
 }
 
 export default (ContactDetails);
+
+const [educationDegree, setEducationDegree] = React.useState('');
+const [educationSchool, setEducationSchool] = React.useState('');
+const [educationStartDate, setEducationStartDate] = React.useState('');
+const [educationEndDate, setEducationEndDate] = React.useState('');
