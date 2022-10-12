@@ -15,8 +15,8 @@ export function Skills() {
             dispatch(ResumatorRedux.actions.setCurrentPageTitle('Skills Languages and Awards'));
         }, [dispatch])
         React.useEffect(dispatchTitle, []);
-    let currentIndex = -1;
-    const Skill = useSelector(ResumatorRedux.selectors.selectSkills);
+    const [currentIndex, setCurrentIndex] = React.useState(-1);
+    const Skill = useSelector(ResumatorRedux.selectors.selectSkill);
     const [curSkill, setCurSkill] = React.useState({});
     const [open, setOpen] = React.useState(false);
     const [modalButtonLabel, setModalButtonLabel] = React.useState('Save');
@@ -28,7 +28,6 @@ export function Skills() {
 
     const handleOpen = () => setOpen(true);
     const handleClose = () => {
-        currentIndex = -1;
         setOpen(false);
     };
     const handleDelete = (index) => {
@@ -39,7 +38,7 @@ export function Skills() {
     const handleEditModal = (index) => {
         return () => {
             setInputFieldVariant('filled');
-            currentIndex = (index);
+            setCurrentIndex(index);
             let curSkill = Skill[index];
             setOpen(true);
             setModalTitle('Edit Skills Languages and Awards');
@@ -51,7 +50,7 @@ export function Skills() {
         }
     }
     const handleAddModal = () => {
-        currentIndex = -1;
+        setCurrentIndex(-1);
         setInputFieldVariant('outlined');
         setModalTitle('Add Skills Languages and Awards');
         setModalButtonLabel('Add');

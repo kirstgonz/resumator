@@ -152,6 +152,7 @@ export const ResumatorRedux = {
         selectResumes: state => state.resumator.resumes,
         selectCandidate: state => state.resumator.candidate,
         selectExperience: state => state.resumator.candidate.experience,
-        selectProject: state => state.resumator.candidate.projects
+        selectProject: state => state.resumator.candidate.projects,
+        selectSkill: state => state.resumator.candidate.skills
     }
 };
