@@ -70,11 +70,11 @@ const slice = createSlice({
                 }
             ],
             education: [],
-            skills: [],
-            interests: [],
-            languages: [],
-            awards: []
-
+            skills: [
+                {"skill": "Front end and Back End Development",
+            "language": "CSS, HTML, React, JavaScript",
+            "award": "Coder of the Week"}
+            ],
         },
         resumes: [
             {
@@ -96,11 +96,22 @@ const slice = createSlice({
             console.log(state, 'work')
             state.candidate.experience[action.payload.index] = action.payload.item;
         },
+        putProject: (state, action) => {
+            console.log(state, 'work')
+            state.candidate.projects[action.payload.index] = action.payload.item;
+        },
+        putSkills: (state, action) => {
+            console.log(state, 'work')
+            state.candidate.skills[action.payload.index] = action.payload.item;
+        },
         addWorkExperience: (state, action) => {
             state.candidate.experience.push(action.payload);
         },
         addProject: (state, action) => {
             state.candidate.projects.push(action.payload);
+        },
+        addSkills: (state, action) => {
+            state.candidate.skills.push(action.payload);
         },
         deleteWorkExperience: (state, action) => {
             state.candidate.experience.splice(action.payload, 1);
@@ -141,6 +152,7 @@ export const ResumatorRedux = {
         selectResumes: state => state.resumator.resumes,
         selectCandidate: state => state.resumator.candidate,
         selectExperience: state => state.resumator.candidate.experience,
-        selectProject: state => state.resumator.candidate.projects
+        selectProject: state => state.resumator.candidate.projects,
+        selectSkill: state => state.resumator.candidate.skills
     }
 };
