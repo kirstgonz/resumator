@@ -22,6 +22,10 @@ export function Projects() {
     const [modalButtonLabel, setModalButtonLabel] = React.useState('Save');
     const [modalTitle, setModalTitle] = React.useState('Edit Project History');
     const [inputFieldVariant, setInputFieldVariant] = React.useState('filled');
+    const [projTitle, setProjTitle] = React.useState('');
+    const [projRole, setProjRole] = React.useState('');
+    const [projTasks, setProjTasks] = React.useState('');
+
     const handleOpen = () => setOpen(true);
     const handleClose = () => {
         currentIndex = -1;
@@ -36,10 +40,13 @@ export function Projects() {
         return () => {
             setInputFieldVariant('filled');
             currentIndex = index;
-            setCurProj(Project[index])
+            let curProj = Project[index];
             setOpen(true);
             setModalTitle('Edit Project');
             setModalButtonLabel('Save');
+            setProjTitle(curProj.title);
+            setProjRole(curProj.role);
+            setProjTasks(curProj.tasks);
         }
     }
     const handleAddModal = () => {
@@ -49,10 +56,26 @@ export function Projects() {
         setModalButtonLabel('Add');
         setCurProj({});
         setOpen(true);
+        setProjTitle('');
+        setProjRole('');
+        setProjTasks('');
     };
-    const handleModalClick = () => {
-        curProj()
+
+    const handleModalSave = () => {
+        const proj = {
+            title: projTitle,
+            role: projRole,
+            tasks: projTasks
+        }
+        if (currentIndex > -1) {
+            dispatch(ResumatorRedux.actions.putProject({index:currentIndex, item: proj}));
+        }
+        else{
+            dispatch(ResumatorRedux.actions.addProject(proj));
+        }
+        handleClose();
     }
+
     const modalStyle = {
         position: 'absolute',
         top: '50%',
@@ -99,21 +122,33 @@ export function Projects() {
                     <LocalizationProvider dateAdapter={AdapterDayjs}>
                         <h3>{modalTitle}</h3>
                         <div>
-                            <TextField value={curProj.title} label="Project" id="project" sx={{ m: 1, width: '25ch' }} variant={inputFieldVariant} />
-                            <TextField value={curProj.role}  label="Role" id="role" sx={{ m: 1, width: '50ch' }} variant={inputFieldVariant} />
+                            <TextField value={projTitle} 
+                                onChange={(e) => {
+                                    setProjTitle(e.target.value);
+                                }} 
+                                label="Project" id="project" sx={{ m: 1, width: '25ch' }} variant={inputFieldVariant} />
+                            
+                            <TextField value={projRole}
+                            onChange={(e) => {
+                                setProjRole(e.target.value);
+                            }}   
+                            label="Role" id="role" sx={{ m: 1, width: '50ch' }} variant={inputFieldVariant} />
                         </div>
                         <div>
                             <TextField
                                 id="tasks"
                                 label="Tasks"
-                                value={curProj.tasks}
+                                value={projTasks}
+                                onChange={(e) => {
+                                    setProjTasks(e.target.value);
+                                }} 
                                 multiline
                                 rows={8}
                                 sx={{ m: 1, width: '50ch' }}
                                 variant={inputFieldVariant}
                             />
                         </div>
-                        <Button onClick={handleModalClick} variant="contained">{modalButtonLabel}</Button>
+                        <Button onClick={handleModalSave} variant="contained">{modalButtonLabel}</Button>
                     </LocalizationProvider>
                 </Box>
             </Modal>
