@@ -1,22 +1,3 @@
-import * as React from 'react';
-import { useDispatch } from 'react-redux';
-import { ResumatorRedux } from './resumatorRedux';
-export function Education() {
-    const dispatch = useDispatch();
-    const dispatchTitle = React.useCallback(
-      () => {
-        dispatch(ResumatorRedux.actions.setCurrentPageTitle('Education'));
-    }, [dispatch])
-    React.useEffect(dispatchTitle, []);
-    
-    return (
-        <div>
-            <h1> This is the Education page</h1>
-        </div>
-    )
-};
-
-
 import { Button, ButtonGroup, ListItem, Modal, Paper, Table, TableBody, TableCell, TableContainer, TableRow, TextField } from '@mui/material';
 import {  MobileDatePicker } from '@mui/x-date-pickers';
 import dayjs, { Dayjs } from 'dayjs';
@@ -26,7 +7,8 @@ import { Box } from '@mui/system';
 import * as React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { ResumatorRedux } from './resumatorRedux';
-export function Work() {
+
+export function Education() {
     const dispatch = useDispatch();
     const dispatchTitle = React.useCallback(
         () => {
@@ -172,7 +154,7 @@ export function Work() {
                                 renderInput={(params) => <TextField sx={{ m: 1, width: '25ch' }} {...params} />}
                             />
                         </div>
-                        
+
                         <Button onClick={handleModalSave} variant="contained">{modalButtonLabel}</Button>
                     </LocalizationProvider>
                 </Box>
