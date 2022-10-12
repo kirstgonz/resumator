@@ -8,9 +8,9 @@ const slice = createSlice({
             "middleName": "Thao",
             "lastName": "Lam",
             "description": "I am a recent college graduate of Austin Community College and enrolled in the Full Stack Web Development Coding bootcamp at the University of Texas. I am looking for opportunities in web development. I have over 10 years work experience with various retail corporations, both in Vietnam and the US. During this time I have developed the following skills: customer service, team management, task priortization, and data analytics.",
-            "email": "kate.lam.austin@gmail.com",
-            "location": "Round Rock, TX",
-            "phoneNumber": "737 203 1148",
+            "email": "thao@gmail.com",
+            "location": "Some Where, TX",
+            "phoneNumber": "555-555-1234",
             "linkedIn": "linkedin.com/in/kate-thao-lam",
             "gitHub": "github.com/Kate-github",
             "experience": [
@@ -69,8 +69,37 @@ const slice = createSlice({
                     "tasks": "Created style sheets for website"
                 }
             ],
-            education: [],
-            skills: [],
+            education: [
+                {
+                    "schoolName": "UT Austin BootCamps",
+                    "degree": "Certficate - Full Stack Web Development",
+                    "graduationDate": "October 2022"
+                },
+                {
+                    "school_name": "Austin Community College",
+                    "degree": "Associates in Business Adminstration",
+                    "gpa": "4.0",
+                    "honors": [
+                        "Chancellor’s Honor Award"
+                    ],
+                    "graduationDate": "December 2021"
+                }
+
+            ],
+            skills: [
+                "HTML",
+                "CSS",
+                "Javascript",
+                "MySQL",
+                "Node.js",
+                "Expressjs",
+                "MongoDB",
+                "ReactJS",
+                "Communication",
+                "Customer Service",
+                "Team Management",
+                "Tasks Management",
+                "Retail Analytics"],
             interests: [],
             languages: [],
             awards: []
@@ -141,6 +170,14 @@ export const ResumatorRedux = {
         selectResumes: state => state.resumator.resumes,
         selectCandidate: state => state.resumator.candidate,
         selectExperience: state => state.resumator.candidate.experience,
-        selectProject: state => state.resumator.candidate.projects
+        selectProject: state => state.resumator.candidate.projects,
+        selectResume: (index) => {
+            return (state) => {
+                return {
+                    resume: state.resumator.resumes[index],
+                    candidate: state.resumator.candidate
+                }
+            }
+        }
     }
 };

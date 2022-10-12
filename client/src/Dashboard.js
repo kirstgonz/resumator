@@ -4,6 +4,7 @@ import * as React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { ResumatorRedux } from './resumatorRedux';
 import { Public, PublicOff } from '@mui/icons-material';
+import { useNavigate } from "react-router-dom";
 
 export function Dashboard() {
     const dispatch = useDispatch();
@@ -22,9 +23,14 @@ export function Dashboard() {
     const [introduction, setIntroduction] = React.useState('');
     const [nickName, setNickName] = React.useState('');
     const [isPublic, setIsPublic] = React.useState('');
+    const navigate = useNavigate();
 
 
-    const handleOpen = () => setOpen(true);
+    const handleViewResume = (index) => {
+        return () => {
+            navigate('/resumes/'+index)
+        }
+    };
     const handleClose = () => {
         setOpen(false);
     };
@@ -102,6 +108,7 @@ export function Dashboard() {
                                 </TableCell>
                                 <TableCell align="right">
                                     <ButtonGroup variant="outlined" aria-label="outlined primary button group">
+                                        <Button onClick={handleViewResume(index)}>View</Button>
                                         <Button onClick={handleEditModal(index)}>Edit</Button>
                                         <Button onClick={handleDelete(index)}>Delete</Button>
                                     </ButtonGroup>
