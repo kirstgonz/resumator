@@ -122,7 +122,7 @@ export function Skills() {
                                 onChange={(e) => {
                                     setSkillName(e.target.value);
                                 }} 
-                                label="Skill" id="skill" sx={{ m: 1, width: '25ch' }} variant={inputFieldVariant} />
+                                label="Skill" id="skill" sx={{ m: 1, width: '50ch' }} variant={inputFieldVariant} />
                             
                             <TextField value={languageName}
                             onChange={(e) => {
@@ -132,14 +132,12 @@ export function Skills() {
                         </div>
                         <div>
                             <TextField
-                                id="tasks"
-                                label="Tasks"
+                                id="award"
+                                label="Award"
                                 value={awardName}
                                 onChange={(e) => {
                                     setAwardName(e.target.value);
                                 }} 
-                                multiline
-                                rows={8}
                                 sx={{ m: 1, width: '50ch' }}
                                 variant={inputFieldVariant}
                             />
