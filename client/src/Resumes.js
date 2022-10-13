@@ -11,20 +11,18 @@ export function Resumes() {
       <div className="card">
         <div className="card-body">
           <h5 className="card-title">Skills</h5>
-          <p className="card-text">
+          <div className="card-text">
 
             <ul className="list-group">
-              {data.candidate.skills.map((skill) => {
+              {data.candidate.skills.map((skill, index) => {
                 return (
-                  <>
-                    <li className="list-group-item">
-                      <span className="badge badge-secondary">{skill}</span>
-                    </li>
-                  </>
+                  <li key={index} className="list-group-item">
+                    <span className="badge badge-secondary">{skill}</span>
+                  </li>
                 );
               })}
             </ul>
-          </p>
+          </div>
         </div>
       </div>
     );
@@ -36,8 +34,8 @@ export function Resumes() {
         <div className="row">
           <div className="col col-md-12">
             <h2><i className="fa-solid fa-building-columns"></i> Education</h2>
-            {data.candidate.education.map(({ schoolName, degree, gpa, graduationDate }) => (
-              <>
+            {data.candidate.education.map(({ schoolName, degree, gpa, graduationDate }, index) => (
+              <div key={index}>
                 <h4>{schoolName}</h4>
                 <div className="row">
                   <div className="col-6"><h6>{degree}</h6></div>
@@ -46,7 +44,7 @@ export function Resumes() {
                 <div className="row">
                   {gpa && <div className="col-6">GPA {gpa}</div>}
                 </div>
-              </>
+              </div>
             ))}
           </div>
         </div>
@@ -56,22 +54,22 @@ export function Resumes() {
 
   const renderWork = () => {
     return (
-      <div clasName="container" id="work-section">
-        <div clasName="row">
-          <div clasName="col col-md-12">
-            <h2><i clasName="fa-solid fa-laptop-file"></i> Work Experience</h2>
-            {data.candidate.experience.map(({ company, title, start_date, end_date, responsibilities, location }) => {
-              return (<>
+      <div className="container" id="work-section">
+        <div className="row">
+          <div className="col col-md-12">
+            <h2><i className="fa-solid fa-laptop-file"></i> Work Experience</h2>
+            {data.candidate.experience.map(({ company, title, start_date, end_date, responsibilities, location }, index) => {
+              return (<div key={index}>
                 <h4>{company}</h4>
                 <h5>{title}</h5>
-                <div clasName="row">
-                  <div clasName="col-6">{start_date} - {end_date}</div>
-                  <div clasName="col-6 align-right">{location}</div>
+                <div className="row">
+                  <div className="col-6">{start_date} - {end_date}</div>
+                  <div className="col-6 align-right">{location}</div>
                 </div>
                 <p>
                   {responsibilities}
                 </p>
-              </>);
+              </div>);
             })}
           </div>
         </div>
@@ -86,9 +84,9 @@ export function Resumes() {
         <div className="row">
           <div className="col col-md-12">
             <h2><i className="fa-solid fa-list-check"></i> Class Projects</h2>
-            {data.candidate.projects.map(({ title, role, tasks }) => {
+            {data.candidate.projects.map(({ title, role, tasks }, index) => {
               return (
-                <>
+                <div key={index}>
                   <h4>{title}</h4>
                   <p>{tasks}</p>
                   <h6>Role: {role}</h6>
@@ -100,7 +98,7 @@ export function Resumes() {
                         </li>);
                     })}
                   </ul> */}
-                </>
+                </div>
               )
             })}
 
@@ -126,7 +124,7 @@ export function Resumes() {
           <div className="col col-3" id="sidebar">
             {renderSkills()}
           </div>
-          <div class="col col-9" id="experience">
+          <div className="col col-9" id="experience">
             <h1>{data.candidate.firstName} {data.candidate.middleName} {data.candidate.lastName}</h1>
             <p>{data.resume.intro}</p>
             <div className="container">

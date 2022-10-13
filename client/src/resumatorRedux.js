@@ -102,12 +102,7 @@ const slice = createSlice({
                 "Retail Analytics"],
             interests: [],
             languages: [],
-            awards: [],
-            skills: [
-                {"skill": "Front end and Back End Development",
-            "language": "CSS, HTML, React, JavaScript",
-            "award": "Coder of the Week"}
-            ],
+            awards: []
         },
         resumes: [
             {
