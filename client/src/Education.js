@@ -19,7 +19,7 @@ export function Education() {
     const Education = useSelector(ResumatorRedux.selectors.selectEducation);
     const [open, setOpen] = React.useState(false);
     const [modalButtonLabel, setModalButtonLabel] = React.useState('Save');
-    const [modalTitle, setModalTitle] = React.useState('Edit Education Experience');
+    const [modalTitle, setModalTitle] = React.useState('Edit Education');
     const [inputFieldVariant, setInputFieldVariant] = React.useState('filled');
     const [educationDegree, setEducationDegree] = React.useState('');
     const [educationSchool, setEducationSchool] = React.useState('');
@@ -44,17 +44,16 @@ export function Education() {
             setModalTitle('Edit Education');
             setModalButtonLabel('Save');
             // set all modal variables;
-            setJobTitle(curEdu.title);
-            setJobDescription(curExp.responsibilities);
-            setJobCompanyName(curExp.company);
-            setJobStartDate(curExp.start_date);
-            setJobEndDate(curExp.end_date);
+            setEducationDegree(curEdu.title);
+            setEducationSchool(curEdu.responsibilities);
+            setEducationStartDate(curEdu.start_date);
+            setEducationEndDate(curEdu.end_date);
         }
     }
     const handleAddModal = () => {
         setCurrentIndex(-1);
         setInputFieldVariant('outlined');
-        setModalTitle('Add Work Experience');
+        setModalTitle('Add Education');
         setModalButtonLabel('Add');
         setOpen(true);
         setEducationDegree('');
@@ -66,8 +65,8 @@ export function Education() {
         const edu = {
             Degree: educationDegree,
             School: educationSchool,
-            start_date: jobStartDate,
-            end_date: jobEndDate
+            start_date: educationStartDate,
+            end_date: educationEndDate
         }
         if (currentIndex > -1) {
             dispatch(ResumatorRedux.actions.putEducation({ index: currentIndex, item: edu }));
@@ -92,10 +91,10 @@ export function Education() {
             <TableContainer component={Paper}>
                 <Table sx={{ minWidth: 650 }} aria-label="Education">
                     <TableBody>
-                        {workExperience.map(({ title, company, start_date, end_date }, index) => (
+                        {Education.map(({ degree, school, start_date, end_date }, index) => (
                             <TableRow key={index} sx={{ '&:last-child td, &:last-child th': { border: 0 } }} >
                                 <TableCell component="th" scope="row">
-                                    {title} - {company}
+                                    {degree} - {school}
                                 </TableCell>
                                 <TableCell align="right">
                                     <ButtonGroup variant="outlined" aria-label="outlined primary button group">
