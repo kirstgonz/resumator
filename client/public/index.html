@@ -25,6 +25,77 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>Resumator</title>
+    <style>
+      title {
+          font-family: Arial, Helvetica, sans-serif;
+          color: rgba(0, 255, 229, 0.516);
+      }
+
+      #sidebar {
+          padding: 15px 15px 15px 15px;
+          text-align: center;
+          background-color: aliceblue;
+          border-right: solid 1px steelblue;
+      }
+
+      #sidebar .card {
+          text-align: left;
+          border: none;
+      }
+
+      .badge-secondary {
+          background-color: slategray;
+      }
+
+      .list-group {
+          --bs-list-group-border-width: 0;
+      }
+
+      .list-group-item {
+          --bs-list-group-item-padding-x: .25rem;
+          --bs-list-group-item-padding-y: .25rem;
+      }
+
+      #imgProfile {
+          margin: auto;
+          border: solid 3px slategray;
+      }
+
+      .fa-diamond {
+          color: steelblue;
+          margin-right: 5px;
+      }
+
+      #experience .list-group {
+          list-style-type: circle;
+          margin-left: 15px;
+      }
+
+      #experience .list-group-item {
+          display: list-item;
+      }
+
+      #edu-section,
+      #work-section,
+      #project-section {
+          margin-top: 45px;
+      }
+
+      .align-right {
+          text-align: right;
+      }
+
+      @media print {
+          #main-content {
+              max-width: 2000px;
+          }
+
+          #edu-section,
+          #project-section {
+              page-break-after: always;
+          }
+      }
+  </style>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>

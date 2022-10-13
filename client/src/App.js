@@ -55,7 +55,7 @@ export function App() {
                 <Route path="interests" element={<Interests/> } />
                 <Route path="languages" element={<Languages/> } />
             </Route>
-            <Route path="/resumes" element={<Resumes />} />
+            <Route path="/resumes/:id" element={<Resumes />} />
         </Routes>
         </ApolloProvider>
     )
