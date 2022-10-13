@@ -28,14 +28,7 @@ const categories = [
             { id: 'languages', title: 'Languages', icon: <SettingsEthernetIcon /> },
             { id: 'interests', title: 'Interests', icon: <SettingsEthernetIcon /> }
         ],
-    },
-    {
-        id: 'Resumes',
-        children: [
-            { id: 'view-all-resumes', title: 'View All Resumes', icon: <SettingsIcon /> },
-            { id: 'create-resume', title: 'Create New Resume', icon: <SettingsIcon /> }
-        ],
-    },
+    }
 ];
 
 const item = {
