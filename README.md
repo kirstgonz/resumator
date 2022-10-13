@@ -32,11 +32,11 @@ Below is an example of the code used to generate adding a work experience.
 ## Credits
 
 Built by 
-[Ashwini LH](https://github.com/ashwinilh)
-[Kate Lam](https://github.com/Kate-github)
-[Todd Holley](https://github.com/ChucktownTiger)
-[JP Maldonado](https://github.com/jpboo888)
-[Kirstyn Gonzalez](https://github.com/kirstgonz)
+- [Ashwini LH](https://github.com/ashwinilh)
+- [Kate Lam](https://github.com/Kate-github)
+- [Todd Holley](https://github.com/ChucktownTiger)
+- [JP Maldonado](https://github.com/jpboo888)
+- [Kirstyn Gonzalez](https://github.com/kirstgonz)
 
 ## License
 
