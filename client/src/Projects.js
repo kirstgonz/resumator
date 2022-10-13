@@ -15,7 +15,7 @@ export function Projects() {
             dispatch(ResumatorRedux.actions.setCurrentPageTitle('Projects'));
         }, [dispatch])
         React.useEffect(dispatchTitle, []);
-    let currentIndex = -1;
+    const [currentIndex, setCurrentIndex] = React.useState(-1);
     const Project = useSelector(ResumatorRedux.selectors.selectProject);
     const [curProj, setCurProj] = React.useState({});
     const [open, setOpen] = React.useState(false);
@@ -28,7 +28,6 @@ export function Projects() {
 
     const handleOpen = () => setOpen(true);
     const handleClose = () => {
-        currentIndex = -1;
         setOpen(false);
     };
     const handleDelete = (index) => {
@@ -39,7 +38,7 @@ export function Projects() {
     const handleEditModal = (index) => {
         return () => {
             setInputFieldVariant('filled');
-            currentIndex = index;
+            setCurrentIndex(index);
             let curProj = Project[index];
             setOpen(true);
             setModalTitle('Edit Project');
@@ -50,7 +49,7 @@ export function Projects() {
         }
     }
     const handleAddModal = () => {
-        currentIndex = -1;
+        setCurrentIndex(-1);
         setInputFieldVariant('outlined');
         setModalTitle('Add Project');
         setModalButtonLabel('Add');
