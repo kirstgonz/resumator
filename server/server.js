@@ -7,6 +7,8 @@ const {authMiddleware} = require('./utils/auth');
 const db = require('./config/connection');
 const { default: mongoose } = require('mongoose');
 
+const uri = process.env.MONGODB_URI;
+
 const PORT = process.env.PORT || 3001;
 const server = new ApolloServer({
   typeDefs,
@@ -46,6 +48,10 @@ const startApolloServer = async (typeDefs, resolvers) => {
     })
   })
   };
+
+  if (process.env.NODE_ENV === 'production'){
+    app.use(express.static('client/build'))
+  }
   
   // Call the async function to start the server
   startApolloServer(typeDefs, resolvers);
