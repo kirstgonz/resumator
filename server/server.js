@@ -7,8 +7,6 @@ const {authMiddleware} = require('./utils/auth');
 const db = require('./config/connection');
 const { default: mongoose } = require('mongoose');
 
-const uri = process.env.MONGODB_URI;
-
 const PORT = process.env.PORT || 3001;
 const server = new ApolloServer({
   typeDefs,
@@ -16,16 +14,17 @@ const server = new ApolloServer({
   context: authMiddleware,
 });
 
-mongoose.connect(process.env.MONGODB_URI || {
-  useNewURLParser: true,
-  useUnifiedTopology: true
-}
-)
 
 const app = express();
 
 app.use(express.urlencoded({ extended: false }));
+app.use(express.static('public'));
+
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, 'public', 'index.html'))
+})
 app.use(express.json());
+
 
 // Serve up static assets
 if (process.env.NODE_ENV === 'production') {
