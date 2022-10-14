@@ -5,7 +5,6 @@ const path = require('path');
 const {typeDefs, resolvers} = require('./schemas');
 const {authMiddleware} = require('./utils/auth');
 const db = require('./config/connection');
-const { default: mongoose } = require('mongoose');
 
 const PORT = process.env.PORT || 3001;
 const server = new ApolloServer({
@@ -14,17 +13,10 @@ const server = new ApolloServer({
   context: authMiddleware,
 });
 
-
 const app = express();
 
 app.use(express.urlencoded({ extended: false }));
-app.use(express.static('public'));
-
-app.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, 'public', 'index.html'))
-})
 app.use(express.json());
-
 
 // Serve up static assets
 if (process.env.NODE_ENV === 'production') {
@@ -47,10 +39,6 @@ const startApolloServer = async (typeDefs, resolvers) => {
     })
   })
   };
-
-  if (process.env.NODE_ENV === 'production'){
-    app.use(express.static('client/build'))
-  }
   
   // Call the async function to start the server
   startApolloServer(typeDefs, resolvers);
