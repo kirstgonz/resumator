@@ -17,7 +17,7 @@ The Resumator aides users in creating, updating, maintaining, and deleting a ful
 
 ## Usage and Website
 
-[Resumator](https://github.com/kirstgonz/resumator) helps users keep track of their resume. Users are able to edit and remove data from the website. This data is then added to their resume, which they can choose from different templates. No installation is required for this program. It can be found deployed [here]().
+[Resumator](https://github.com/kirstgonz/resumator) helps users keep track of their resume. Users are able to edit and remove data from the website. This data is then added to their resume, which they can choose from different templates. No installation is required for this program. It can be found deployed [here](https://ashwiniresumator.herokuapp.com/).
 
 
 Below is the front page of the website that users see upon visiting.
